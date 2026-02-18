@@ -6,7 +6,10 @@ from lesson_10.pages.calculator_page import CalculatorPage
 @allure.feature("Калькулятор")
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.title("Проверка сложения 7 + 8")
-@allure.description("Тест проверяет корректность сложения 7 и 8 на странице медленного калькулятора.")
+@allure.description(
+    "Тест проверяет корректность сложения 7 и 8 "
+    "на странице медленного калькулятора."
+)
 def test_slow_calculator_page_object():
 
     driver = webdriver.Chrome()

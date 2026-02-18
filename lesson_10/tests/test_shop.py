@@ -11,12 +11,13 @@ from lesson_10.pages.checkout_page import CheckoutPage
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.title("Полный цикл покупки товара")
 @allure.description(
-    "Тест проверяет полный процесс покупки: логин, добавление товаров в корзину, "
+    "Тест проверяет полный процесс покупки: логин, "
+    "добавление товаров в корзину, "
     "оформление заказа и проверку итоговой суммы."
 )
 def test_shop_page_object():
-
     driver = webdriver.Firefox()
+    driver.maximize_window()
 
     try:
         login_page = LoginPage(driver)
@@ -44,10 +45,8 @@ def test_shop_page_object():
         with allure.step("Заполнить форму оформления заказа"):
             checkout_page.fill_form("Стася", "Борисова", "123456")
 
-        with allure.step("Получить итоговую сумму"):
-            total = checkout_page.get_total()
-
         with allure.step("Проверить итоговую сумму"):
+            total = checkout_page.get_total()
             assert total == "Total: $58.29"
 
     finally:
